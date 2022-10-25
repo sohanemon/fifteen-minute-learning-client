@@ -5,6 +5,7 @@ import Main from "../layouts/main";
 import About from "../pages/about";
 import Blogs from "../pages/blogs";
 import Courses from "../pages/courses";
+import Faq from "../pages/faq";
 import Home from "../pages/home";
 
 export const router = createBrowserRouter([
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
+            loader: () => fetch(`${process.env.REACT_APP_host}/courses`),
             element: <Courses />,
           },
           {
@@ -29,6 +31,10 @@ export const router = createBrowserRouter([
             element: <CourseDetails />,
           },
         ],
+      },
+      {
+        path: "/faq",
+        element: <Faq />,
       },
       {
         path: "/blogs",

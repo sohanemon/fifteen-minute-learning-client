@@ -12,7 +12,11 @@ const CourseDetails = () => {
     return () => {};
   }, [params]);
 
-  return <>{course.id}</>;
+  return (
+    <>
+      {course.id} {course.description}
+    </>
+  );
 };
 
 export default CourseDetails;

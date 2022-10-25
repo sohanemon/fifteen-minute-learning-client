@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { IoIosArrowForward } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
@@ -10,9 +11,9 @@ const Sidebar = () => {
     return () => {};
   }, []);
   return (
-    <section>
+    <section className='text-center sm:text-left'>
       <h1 className='text-xl font-semibold'>Latest courses</h1>
-      <div className='mt-3'>
+      <div className='mt-3 space-y-4'>
         {courses.map((el) => (
           <Course key={el.id} {...el} />
         ))}
@@ -28,9 +29,10 @@ const Course = ({ title, id }) => {
     <>
       <NavLink
         to={`/courses/${id}`}
-        className='block font-semibold text-gray-800'
+        className='flex items-center mx-auto w-max sm:mx-0 group font-semibold text-gray-800 gap-1 hover:text-indigo-500'
       >
-        {title}
+        {title}{" "}
+        <IoIosArrowForward className='hidden group-hover:block transition-all' />
       </NavLink>
     </>
   );

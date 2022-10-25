@@ -4,10 +4,10 @@ import Sidebar from "../components/sidebar";
 const CourseLayout = () => {
   return (
     <div className='container grid grid-cols-12 mx-auto '>
-      <aside className='col-span-3'>
+      <aside className='sm:col-span-3 col-span-full'>
         <Sidebar />
       </aside>
-      <main className='col-span-9'>
+      <main className='sm:col-span-9 col-span-full'>
         <Outlet />
       </main>
     </div>
