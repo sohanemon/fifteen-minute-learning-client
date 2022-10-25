@@ -14,7 +14,7 @@ const Navbar = () => {
               alt='15ml Logo'
             />
             <span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'>
-              15ML
+              15MinuteLearning
             </span>
           </Link>
           <div className='flex md:order-2'>
@@ -22,7 +22,7 @@ const Navbar = () => {
               type='button'
               className='text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800'
             >
-              Get started
+              Sign in
             </button>
             <button
               data-collapse-toggle='navbar-sticky'
@@ -57,10 +57,10 @@ const Navbar = () => {
                   <Link
                     to={`/${el === "home" ? "" : el}`}
                     className={
-                      pathname === `/${el}` ||
+                      pathname.includes(el) ||
                       (pathname === "/" && el === "home")
-                        ? "text-indigo-500 underline" + LinkClass
-                        : LinkClass
+                        ? "text-indigo-500 dark:text-white" + LinkClass
+                        : "dark:text-gray-400 text-gray-700 " + LinkClass
                     }
                     aria-current='page'
                   >
@@ -79,5 +79,5 @@ const Navbar = () => {
 export default Navbar;
 
 const LinkClass =
-  " capitalize block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-indigo-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700";
+  " capitalize block py-2 pr-4 pl-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-indigo-700 md:p-0 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700";
 const navItems = ["home", "courses", "blogs", "about"];
