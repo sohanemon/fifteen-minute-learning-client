@@ -3,7 +3,7 @@ import { router } from "./routes/router";
 
 function App() {
   return (
-    <div className='dark'>
+    <div className='dark font-poppins'>
       <RouterProvider router={router} />
     </div>
   );

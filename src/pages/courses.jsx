@@ -24,9 +24,9 @@ export default Courses;
 function Card({ thumbnail, title, id, description }) {
   return (
     <div className='max-w-sm mx-auto'>
-      <div className='bg-white rounded-xl shadow-lg px-8 space-y-4 py-4 sm:px-12 lg:px-8'>
+      <div className='bg-white rounded-xl shadow hover:shadow-md px-8 space-y-4 py-4 sm:px-12 lg:px-8'>
         <img
-          className='object-contain h-36 mx-auto'
+          className='object-contain h-36 mx-auto drop-shadow-sm'
           src={thumbnail}
           alt='illustration'
           loading='lazy'

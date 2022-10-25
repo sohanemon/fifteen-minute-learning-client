@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 const Sidebar = () => {
   const [courses, setCourses] = useState([]);
+
   useEffect(() => {
     fetch(`${process.env.REACT_APP_host}/courses`)
       .then((res) => res.json())
@@ -25,15 +26,26 @@ const Sidebar = () => {
 export default Sidebar;
 
 const Course = ({ title, id }) => {
+  const params = useParams();
   return (
     <>
       <NavLink
         to={`/courses/${id}`}
-        className='flex items-center mx-auto w-max sm:mx-0 group font-semibold text-gray-800 gap-1 hover:text-indigo-500'
+        className={({ isActive }) => {
+          return isActive
+            ? "text-indigo-500" + navStyle
+            : "text-gray-800 " + navStyle;
+        }}
       >
-        {title}{" "}
-        <IoIosArrowForward className='hidden group-hover:block transition-all' />
+        {title}
+        <IoIosArrowForward
+          className={`${
+            params.id === id ? "block" : "hidden"
+          } group-hover:block transition-all`}
+        />
       </NavLink>
     </>
   );
 };
+const navStyle =
+  " flex items-center mx-auto w-max sm:mx-0 group font-semibold gap-1 hover:text-indigo-500";
