@@ -1,12 +1,10 @@
-import { list } from "postcss";
+import { Menu } from "@headlessui/react";
 import { Link, useLocation } from "react-router-dom";
 import { useUser } from "../contexts/user-provider";
-import { PrimaryBtn } from "./buttons";
 
 const Navbar = () => {
   const { pathname } = useLocation();
-  const { user } = useUser();
-  console.log("🚀 > Navbar > user", user.photoURL);
+  const { user, logOut } = useUser();
   return (
     <>
       <header>
@@ -68,29 +66,67 @@ const Navbar = () => {
                   </ul>
 
                   <ul className='border-t space-y-2 pt-2 lg:space-y-0 lg:space-x-2 lg:pt-0 lg:pl-2 lg:border-t-0 lg:border-l lg:items-center lg:flex'>
-                    <li>
-                      <button
-                        type='button'
-                        title='Start buying'
-                        className='w-full py-3 px-6 rounded-md text-center transition active:bg-sky-200 focus:bg-sky-100 sm:w-max'
-                      >
-                        <span className='block text-cyan-600 font-semibold'>
-                          Sign in
-                        </span>
-                      </button>
-                    </li>
+                    {user?.uid ? (
+                      <>
+                        <Menu>
+                          <Menu.Button title='more' className='group relative'>
+                            {" "}
+                            <img
+                              data-tip='ok'
+                              data-for='#ok'
+                              src={user?.photoURL}
+                              className='w-7 h-7 ring-1 rounded-full'
+                              alt=''
+                            />
+                            <p className='hidden group-hover:inline-block absolute w-max right-0 mt-4'>
+                              {user?.displayName}
+                            </p>
+                          </Menu.Button>
+                          <Menu.Items className='mt-2 w-max origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+                            <Menu.Item>
+                              {({ active }) => (
+                                <button
+                                  onClick={logOut}
+                                  className={`${
+                                    active &&
+                                    "hover:ring-indigo-500 ring-1 text-indigo-500 "
+                                  } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                                  href='/account-settings'
+                                >
+                                  Sign Out
+                                </button>
+                              )}
+                            </Menu.Item>
+                          </Menu.Items>
+                        </Menu>
+                      </>
+                    ) : (
+                      <>
+                        <li>
+                          <Link
+                            type='button'
+                            to={"/login"}
+                            className='w-full py-3 px-6 rounded-md text-center transition active:bg-sky-200 focus:bg-sky-100 sm:w-max'
+                          >
+                            <span className='block text-indigo-600 font-semibold'>
+                              Sign in
+                            </span>
+                          </Link>
+                        </li>
 
-                    <li>
-                      <button
-                        type='button'
-                        title='Start buying'
-                        className='w-full py-3 px-6 rounded-md text-center transition bg-cyan-500 hover:bg-cyan-600 active:bg-cyan-700 focus:bg-sky-600 sm:w-max'
-                      >
-                        <span className='block text-white font-semibold'>
-                          Try it for free
-                        </span>
-                      </button>
-                    </li>
+                        <li>
+                          <Link
+                            to={"/register"}
+                            type='button'
+                            className='w-full py-3 px-6 rounded-md text-center transition bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus:bg-sky-600 sm:w-max'
+                          >
+                            <span className='block text-white font-semibold'>
+                              Register
+                            </span>
+                          </Link>
+                        </li>
+                      </>
+                    )}
                   </ul>
                 </div>
               </div>
