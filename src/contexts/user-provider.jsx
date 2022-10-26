@@ -17,6 +17,7 @@ const User = createContext({});
 export const useUser = () => useContext(User);
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const [isUserLoaded, setIsUserLoaded] = useState(false);
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -26,6 +27,7 @@ const UserProvider = ({ children }) => {
       } else {
         console.log("No previous user found...");
       }
+      setIsUserLoaded(true);
     });
 
     return () => {};
@@ -45,7 +47,7 @@ const UserProvider = ({ children }) => {
   };
   const emailSignUp = async (data) => {
     return createUserWithEmailAndPassword(auth, data.email, data.password).then(
-      (userCredential) => {
+      () => {
         updateProfile(auth.currentUser, {
           displayName: data.displayName,
           photoURL: data.photoURL,
@@ -64,6 +66,7 @@ const UserProvider = ({ children }) => {
   return (
     <User.Provider
       value={{
+        isUserLoaded,
         user,
         logOut,
         googleSignIn,

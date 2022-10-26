@@ -4,11 +4,13 @@ import CourseLayout from "../layouts/course-layout";
 import Main from "../layouts/main";
 import About from "../pages/about";
 import Blogs from "../pages/blogs";
+import Checkout from "../pages/checkout";
 import Courses from "../pages/courses";
 import Faq from "../pages/faq";
 import Home from "../pages/home";
 import Login from "../pages/login";
 import Register from "../pages/register";
+import PrivateRoute from "./private-route";
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +55,14 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/checkout",
+        element: (
+          <PrivateRoute>
+            <Checkout />
+          </PrivateRoute>
+        ),
       },
     ],
   },

@@ -78,7 +78,7 @@ const Navbar = () => {
                               className='w-7 h-7 ring-1 rounded-full'
                               alt=''
                             />
-                            <p className='hidden group-hover:inline-block absolute w-max right-0 mt-4'>
+                            <p className='hidden group-hover:inline-block absolute w-max right-0 mt-4 bg-white px-4 py-2 rounded-md shadow-lg'>
                               {user?.displayName}
                             </p>
                           </Menu.Button>

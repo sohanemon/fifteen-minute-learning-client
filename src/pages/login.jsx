@@ -1,21 +1,21 @@
-import { async } from "@firebase/util";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../contexts/user-provider";
 const Login = () => {
   const { googleSignIn, githubSignIn, emailSignIn } = useUser();
   const navigate = useNavigate();
+  const location = useLocation();
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     emailSignIn(data)
-      .then(() => navigate("/"))
+      .then(() => navigate(location.state.from, { replace: true }))
       .catch((error) => console.log(error));
   };
   const handleGoogle = async () => {
-    googleSignIn().then(() => navigate("/"));
+    googleSignIn().then(() => navigate(location.state.from, { replace: true }));
   };
   const handleGithub = async () => {
-    githubSignIn().then(() => navigate("/"));
+    githubSignIn().then(() => navigate(location.state.from, { replace: true }));
   };
 
   return (

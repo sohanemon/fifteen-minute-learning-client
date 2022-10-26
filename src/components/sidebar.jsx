@@ -1,24 +1,31 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { NavLink, useParams } from "react-router-dom";
-
+import { VscLoading } from "react-icons/vsc";
 const Sidebar = () => {
   const [courses, setCourses] = useState([]);
-
+  const [isPending, setIsPending] = useState(true);
   useEffect(() => {
     fetch(`${process.env.REACT_APP_host}/courses`)
       .then((res) => res.json())
-      .then((data) => setCourses(data));
+      .then((data) => {
+        setCourses(data);
+        setIsPending(false);
+      });
     return () => {};
   }, []);
   return (
     <section className='text-center sm:text-left'>
       <h1 className='text-xl font-semibold'>Latest courses</h1>
-      <div className='mt-3 space-y-4'>
-        {courses.map((el) => (
-          <Course key={el.id} {...el} />
-        ))}
-      </div>
+      {isPending ? (
+        <VscLoading className='animate-spin text-3xl w-full h-12 mt-12' />
+      ) : (
+        <div className='mt-3 space-y-4'>
+          {courses.map((el) => (
+            <Course key={el.id} {...el} />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

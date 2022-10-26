@@ -1,18 +1,22 @@
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../contexts/user-provider";
 const Register = () => {
   const { googleSignIn, githubSignIn, emailSignUp } = useUser();
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
+  const location = useLocation();
+
   const onSubmit = (data) => {
-    emailSignUp(data).then(() => navigate("/"));
+    emailSignUp(data).then(() =>
+      navigate(location.state.from, { replace: true })
+    );
   };
   const handleGoogle = async () => {
-    googleSignIn().then(() => navigate("/"));
+    googleSignIn().then(() => navigate(location.state.from, { replace: true }));
   };
   const handleGithub = async () => {
-    githubSignIn().then(() => navigate("/"));
+    githubSignIn().then(() => navigate(location.state.from, { replace: true }));
   };
   return (
     <>
