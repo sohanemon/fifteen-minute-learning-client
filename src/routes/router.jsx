@@ -7,6 +7,8 @@ import Blogs from "../pages/blogs";
 import Courses from "../pages/courses";
 import Faq from "../pages/faq";
 import Home from "../pages/home";
+import Login from "../pages/login";
+import Register from "../pages/register";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +45,14 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
     ],
   },

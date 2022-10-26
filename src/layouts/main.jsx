@@ -5,11 +5,7 @@ const Main = () => {
   return (
     <div>
       <Navbar />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+
       <Outlet />
     </div>
   );

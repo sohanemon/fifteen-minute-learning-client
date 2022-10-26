@@ -21,8 +21,8 @@ const Hero = () => {
               <SecondaryBtn>About us</SecondaryBtn>
             </Link>
 
-            <Link to={"login"}>
-              <PrimaryBtn>Contact Us</PrimaryBtn>
+            <Link to={"/courses"}>
+              <PrimaryBtn>Get started</PrimaryBtn>
             </Link>
           </div>
         </div>

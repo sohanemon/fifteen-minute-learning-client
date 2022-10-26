@@ -1,73 +1,103 @@
 import { list } from "postcss";
 import { Link, useLocation } from "react-router-dom";
+import { useUser } from "../contexts/user-provider";
 import { PrimaryBtn } from "./buttons";
 
 const Navbar = () => {
   const { pathname } = useLocation();
+  const { user } = useUser();
+  console.log("🚀 > Navbar > user", user.photoURL);
   return (
     <>
-      <nav className='bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600'>
-        <div className='container flex flex-wrap justify-between items-center mx-auto'>
-          <Link href='https://flowbite.com/' className='flex items-center'>
-            <img
-              src='https://images.vexels.com/media/users/3/151566/isolated/lists/2e8706eaadcd2d297a542ac2385de370-15-minutes-clock-icon.png'
-              className='mr-3 h-6 sm:h-9'
-              alt='15ml Logo'
-            />
-            <span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'>
-              15MinuteLearning
-            </span>
-          </Link>
-          <div className='flex md:order-2'>
-            <PrimaryBtn>Sign in</PrimaryBtn>
-            <button
-              data-collapse-toggle='navbar-sticky'
-              type='button'
-              className='inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
-              aria-controls='navbar-sticky'
-              aria-expanded='false'
-            >
-              <span className='sr-only'>Open main menu</span>
-              <svg
-                className='w-6 h-6'
-                aria-hidden='true'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
+      <header>
+        <nav className='sticky top-0 w-full bg-white '>
+          <div className='container m-auto px-6 md:px-12 lg:px-6'>
+            <div className='flex flex-wrap items-center justify-between py-6 gap-6 md:py-4 md:gap-0'>
+              <div className='w-full flex justify-between lg:w-auto'>
+                <Link to={"/"} className='flex items-center'>
+                  <img
+                    src='https://images.vexels.com/media/users/3/151566/isolated/lists/2e8706eaadcd2d297a542ac2385de370-15-minutes-clock-icon.png'
+                    className='mr-3 h-6 sm:h-9'
+                    alt='15ml Logo'
+                  />
+                  <span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'>
+                    15MinuteLearning
+                  </span>
+                </Link>
+
+                <button
+                  aria-label='humburger'
+                  id='hamburger'
+                  className='relative w-10 h-10 -mr-2 lg:hidden'
+                >
+                  <div
+                    aria-hidden='true'
+                    id='line'
+                    className='inset-0 w-6 h-0.5 m-auto rounded bg-gray-500 transtion duration-300'
+                  />
+                  <div
+                    aria-hidden='true'
+                    id='line2'
+                    className='inset-0 w-6 h-0.5 mt-2 m-auto rounded bg-gray-500 transtion duration-300'
+                  />
+                </button>
+              </div>
+
+              <div
+                hidden
+                className='w-full bg-white md:space-y-0 md:p-0 md:flex-nowrap md:bg-transparent lg:w-auto lg:flex'
               >
-                <path
-                  fillRule='evenodd'
-                  d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z'
-                  clipRule='evenodd'
-                />
-              </svg>
-            </button>
+                <div className='block w-full lg:items-center lg:flex'>
+                  <ul className='space-y-6 pb-6 tracking-wide font-medium text-gray-600 lg:pb-0 lg:pr-6 lg:items-center lg:flex lg:space-y-0'>
+                    {navItems.map((el) => (
+                      <li key={el} className='block md:px-3'>
+                        <Link
+                          to={`/${el === "home" ? "" : el}`}
+                          className={
+                            pathname.includes(el) ||
+                            (pathname === "/" && el === "home")
+                              ? "text-indigo-500 dark:text-white" + LinkClass
+                              : "dark:text-gray-400 text-gray-700 " + LinkClass
+                          }
+                          aria-current='page'
+                        >
+                          {el}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <ul className='border-t space-y-2 pt-2 lg:space-y-0 lg:space-x-2 lg:pt-0 lg:pl-2 lg:border-t-0 lg:border-l lg:items-center lg:flex'>
+                    <li>
+                      <button
+                        type='button'
+                        title='Start buying'
+                        className='w-full py-3 px-6 rounded-md text-center transition active:bg-sky-200 focus:bg-sky-100 sm:w-max'
+                      >
+                        <span className='block text-cyan-600 font-semibold'>
+                          Sign in
+                        </span>
+                      </button>
+                    </li>
+
+                    <li>
+                      <button
+                        type='button'
+                        title='Start buying'
+                        className='w-full py-3 px-6 rounded-md text-center transition bg-cyan-500 hover:bg-cyan-600 active:bg-cyan-700 focus:bg-sky-600 sm:w-max'
+                      >
+                        <span className='block text-white font-semibold'>
+                          Try it for free
+                        </span>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
-          <div
-            className='hidden justify-between items-center w-full md:flex md:w-auto md:order-1'
-            id='navbar-sticky'
-          >
-            <ul className='flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700'>
-              {navItems.map((el) => (
-                <li key={el}>
-                  <Link
-                    to={`/${el === "home" ? "" : el}`}
-                    className={
-                      pathname.includes(el) ||
-                      (pathname === "/" && el === "home")
-                        ? "text-indigo-500 dark:text-white" + LinkClass
-                        : "dark:text-gray-400 text-gray-700 " + LinkClass
-                    }
-                    aria-current='page'
-                  >
-                    {el}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </nav>
+        </nav>
+      </header>
     </>
   );
 };
@@ -75,5 +105,5 @@ const Navbar = () => {
 export default Navbar;
 
 const LinkClass =
-  " capitalize block py-2 pr-4 pl-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-indigo-700 md:p-0 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700";
+  " capitalize block py-2 pr-4 pl-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-indigo-700 md:p-0 md:dark:hover:text-white font-semibold dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700";
 const navItems = ["home", "courses", "blogs", "FAQ", "about"];
