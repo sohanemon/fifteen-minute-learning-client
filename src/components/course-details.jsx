@@ -3,6 +3,7 @@ import { BsFillStarFill } from "react-icons/bs";
 import { MdVideoSettings } from "react-icons/md";
 import { VscProject } from "react-icons/vsc";
 import { Link, useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 import { PrimaryBtn } from "./buttons";
 import { FaFileDownload } from "react-icons/fa";
 import ReactToPdf from "react-to-pdf";
@@ -26,7 +27,9 @@ const CourseDetails = () => {
         >
           <div className='space-y-6 md:space-y-0  md:gap-6 lg:items-center lg:gap-12'>
             <div className=' grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10'>
-              <img
+              <motion.img
+                initial={{ x: "-100%", opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
                 className='object-cover order-last md:order-first max-w-lg w-full rounded-xl shadow-lg'
                 src={course.image}
                 alt={course.title}

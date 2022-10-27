@@ -1,5 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
-
+import { motion } from "framer-motion";
 const Courses = () => {
   const courses = useLoaderData();
   return (
@@ -23,7 +23,18 @@ export default Courses;
 
 function Card({ thumbnail, title, id, description }) {
   return (
-    <div className='max-w-sm mx-auto'>
+    <motion.div
+      initial={{
+        y: "60px",
+        opacity: 0.1,
+      }}
+      whileInView={{
+        y: 0,
+        opacity: 1,
+      }}
+      viewport={{ once: true }}
+      className='max-w-sm mx-auto'
+    >
       <div className='bg-white dark:bg-gray-500 rounded-xl shadow hover:shadow-md px-8 space-y-4 py-4 sm:px-12 lg:px-8'>
         <img
           className='object-contain h-36 mx-auto drop-shadow-sm'
@@ -42,6 +53,6 @@ function Card({ thumbnail, title, id, description }) {
           Know more
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 }

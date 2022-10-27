@@ -9,7 +9,14 @@ const Toggler = () => {
 
   return (
     <AnimatePresence>
-      <button
+      <motion.button
+        key={"button"}
+        initial={{ rotate: 0 }}
+        whileTap={{
+          rotate: nightMode ? -30 : 30,
+          transition: { duration: 0.2, type: "tween" },
+        }}
+        title='Toggle Theme'
         onClick={handleMode}
         className='w-20 h-10 rounded-full p-3 bg-indigo-700 dark:bg-indigo-100 flex text-2xl items-center mx-2'
       >
@@ -32,7 +39,7 @@ const Toggler = () => {
             <BsFillMoonFill />
           </motion.div>
         )}
-      </button>
+      </motion.button>
     </AnimatePresence>
   );
 };

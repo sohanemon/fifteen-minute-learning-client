@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../contexts/user-provider";
 import { sliceError } from "../utilities/slice-error";
+import { motion } from "framer-motion";
 const Login = () => {
   const { googleSignIn, githubSignIn, emailSignIn } = useUser();
   const navigate = useNavigate();
@@ -27,7 +28,15 @@ const Login = () => {
       <div className='m-auto container px-12 sm:px-0 mx-auto'>
         <div className='mx-auto h-full md:w-10/12 lg:w-6/12'>
           <div className='m-auto  py-8 sm:px-20 xl:w-10/12'>
-            <div className=' rounded-3xl border bg-gray-50 dark:border-gray-700 dark:bg-gray-800 -mx-6 sm:-mx-10 p-8 sm:p-10'>
+            <motion.div
+              initial={{ scale: 0.2, opacity: 0.2 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{
+                duration: 0.5,
+                ease: "easeOut",
+              }}
+              className=' rounded-3xl border bg-gray-50 dark:border-gray-700 dark:bg-gray-800 -mx-6 sm:-mx-10 p-8 sm:p-10'
+            >
               <div className='grid gap-6 sm:grid-cols-2'>
                 <button
                   onClick={handleGoogle}
@@ -109,7 +118,7 @@ const Login = () => {
                   </Link>
                 </div>
               </form>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

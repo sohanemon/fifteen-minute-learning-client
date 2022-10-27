@@ -43,6 +43,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/blogs",
+        loader: () => fetch(`${process.env.REACT_APP_host}/blogs`),
         element: <Blogs />,
       },
       {

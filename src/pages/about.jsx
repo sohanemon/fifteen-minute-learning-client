@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { pingMotion } from "./blogs";
 
 const About = () => {
   return (
     <>
-      <div className='py-16 bg-white h-screen dark:text-white dark:bg-gray-800'>
+      <motion.div
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        className='py-16 bg-white h-screen dark:text-white dark:bg-gray-800'
+      >
         <div className='container m-auto px-6 space-y-8 text-gray-500 md:px-12 lg:px-20'>
           <div className='flex items-center justify-center -space-x-2'>
             <img
@@ -65,7 +71,7 @@ const About = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
       <Footer />
     </>
   );

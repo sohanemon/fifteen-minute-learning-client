@@ -1,10 +1,18 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { PrimaryBtn, SecondaryBtn } from "./buttons";
-
 const Hero = () => {
   return (
     <>
-      <div className='relative container border-l border-r m-auto !p-4 px-6 md:px-12 lg:px-7 lg:mt-12 '>
+      <motion.div
+        initial={{
+          y: -100,
+        }}
+        animate={{
+          y: 0,
+        }}
+        className='relative container border-l border-r dark:border-gray-600 border-gray-300 m-auto !p-4 px-6 md:px-12 lg:px-7 lg:mt-12 '
+      >
         <div className='p-4 md:w-9/12 lg:w-7/12  mx-auto'>
           <h1 className='text-gray-900 dark:text-white font-bold text-4xl md:text-6xl lg:text-4xl xl:text-6xl'>
             Shaping a world with an endless{" "}
@@ -26,7 +34,7 @@ const Hero = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

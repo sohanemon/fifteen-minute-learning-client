@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { VscLoading } from "react-icons/vsc";
+import { motion } from "framer-motion";
 import { NavLink, useParams } from "react-router-dom";
 const Sidebar = () => {
   const [courses, setCourses] = useState([]);
@@ -35,7 +36,19 @@ export default Sidebar;
 const Course = ({ title, id }) => {
   const params = useParams();
   return (
-    <>
+    <motion.div
+      whileTap={{
+        x: 15,
+      }}
+      initial={{
+        x: -100,
+        opacity: 0.4,
+      }}
+      animate={{
+        x: 0,
+        opacity: 1,
+      }}
+    >
       <NavLink
         to={`/courses/${id}`}
         className={({ isActive }) => {
@@ -51,7 +64,7 @@ const Course = ({ title, id }) => {
           } group-hover:block transition-all`}
         />
       </NavLink>
-    </>
+    </motion.div>
   );
 };
 const navStyle =
