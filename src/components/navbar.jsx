@@ -1,17 +1,18 @@
 import { Menu } from "@headlessui/react";
 import { Link, useLocation } from "react-router-dom";
 import { useUser } from "../contexts/user-provider";
+import Toggler from "./toggler";
 
 const Navbar = () => {
   const { pathname } = useLocation();
   const { user, logOut } = useUser();
   return (
     <>
-      <header className='sticky top-0 bg-white z-50 shadow'>
-        <nav className=' w-full bg-white '>
+      <header className='sticky top-0 bg-white dark:bg-gray-700 z-50 shadow'>
+        <nav className=' w-full '>
           <div className='container m-auto px-6 md:px-12 lg:px-6'>
             <div className='flex flex-wrap items-center justify-between py-6 gap-6 md:py-4 md:gap-0'>
-              <div className='w-full flex justify-between lg:w-auto'>
+              <div className='w-full flex justify-between lg:w-auto items-center'>
                 <Link to={"/"} className='flex items-center'>
                   <img
                     src='https://images.vexels.com/media/users/3/151566/isolated/lists/2e8706eaadcd2d297a542ac2385de370-15-minutes-clock-icon.png'
@@ -22,7 +23,7 @@ const Navbar = () => {
                     15MinuteLearning
                   </span>
                 </Link>
-
+                <Toggler />
                 <button
                   aria-label='humburger'
                   id='hamburger'
@@ -54,8 +55,8 @@ const Navbar = () => {
                           className={
                             pathname.includes(el) ||
                             (pathname === "/" && el === "home")
-                              ? "text-indigo-500 dark:text-white" + LinkClass
-                              : "dark:text-gray-400 text-gray-700 " + LinkClass
+                              ? "text-indigo-500 " + LinkClass
+                              : "dark:text-gray-100 text-gray-700 " + LinkClass
                           }
                           aria-current='page'
                         >
@@ -145,5 +146,5 @@ const Navbar = () => {
 export default Navbar;
 
 const LinkClass =
-  " capitalize block py-2 pr-4 pl-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-indigo-700 md:p-0 md:dark:hover:text-white font-semibold dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700";
+  " capitalize block py-2 pr-4 pl-3 rounded  hover:text-indigo-700 dark:hover:text-indigo-400 md:p-0  font-semibold dark:border-gray-700";
 const navItems = ["home", "courses", "blogs", "FAQ", "about"];

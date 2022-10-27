@@ -4,7 +4,7 @@ import { PrimaryBtn, SecondaryBtn } from "./buttons";
 const Hero = () => {
   return (
     <>
-      <div className='relative container border-l border-r m-auto !p-4 px-6 md:px-12 lg:px-7'>
+      <div className='relative container border-l border-r m-auto !p-4 px-6 md:px-12 lg:px-7 lg:mt-12'>
         <div className='p-4 md:w-9/12 lg:w-7/12  mx-auto'>
           <h1 className='text-gray-900 font-bold text-4xl md:text-6xl lg:text-4xl xl:text-6xl'>
             Shaping a world with an endless{" "}

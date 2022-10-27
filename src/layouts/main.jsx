@@ -3,7 +3,10 @@ import Navbar from "../components/navbar";
 
 const Main = () => {
   return (
-    <div>
+    <div
+      className='dark:bg-gray-800
+    '
+    >
       <Navbar />
 
       <Outlet />

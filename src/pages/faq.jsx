@@ -1,7 +1,10 @@
 import { useLoaderData } from "react-router-dom";
+import { useTheme } from "../contexts/theme-provider";
 
 const Faq = () => {
   const data = useLoaderData();
+  const { nightMode } = useTheme();
+  console.log(nightMode);
   return (
     <>
       <section className='dark:bg-gray-800 dark:text-gray-100'>
@@ -14,12 +17,10 @@ const Faq = () => {
           </h2>
           <div className='grid gap-10 md:gap-8 sm:p-3 md:grid-cols-2 lg:px-12 xl:px-32'>
             {data.map((el) => (
-              <>
-                <div key={el.id}>
-                  <h3 className='font-semibold'>{el.question}?</h3>
-                  <p className='mt-1 dark:text-gray-400'>{el.answer}</p>
-                </div>
-              </>
+              <div key={el.id}>
+                <h3 className='font-semibold'>{el.question}?</h3>
+                <p className='mt-1 dark:text-gray-400'>{el.answer}</p>
+              </div>
             ))}
           </div>
         </div>

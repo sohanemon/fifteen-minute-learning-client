@@ -1,13 +1,12 @@
 import { RouterProvider } from "react-router-dom";
-import UserProvider from "./contexts/user-provider";
+import { useTheme } from "./contexts/theme-provider";
 import { router } from "./routes/router";
 
 function App() {
+  const { nightMode } = useTheme();
   return (
-    <div className='dark font-poppins'>
-      <UserProvider>
-        <RouterProvider router={router} />
-      </UserProvider>
+    <div className={`${nightMode && "dark"}  font-poppins`}>
+      <RouterProvider router={router} />{" "}
     </div>
   );
 }
