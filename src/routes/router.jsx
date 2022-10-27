@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import CourseDetails from "../components/course-details";
+import NotFound from "../components/not-found";
 import CourseLayout from "../layouts/course-layout";
 import Main from "../layouts/main";
 import About from "../pages/about";
@@ -60,6 +61,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/checkout/:id",
+        errorElement: <NotFound />,
         loader: ({ params }) =>
           fetch(`${process.env.REACT_APP_host}/courses/${params?.id}`),
         element: (
@@ -69,5 +71,9 @@ export const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);

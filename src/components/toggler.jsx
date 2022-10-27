@@ -4,6 +4,7 @@ import { useTheme } from "../contexts/theme-provider";
 const Toggler = () => {
   const { setNightMode, nightMode } = useTheme();
   const handleMode = () => {
+    localStorage.setItem("night_mode", nightMode ? false : true);
     setNightMode((p) => !p);
   };
 
