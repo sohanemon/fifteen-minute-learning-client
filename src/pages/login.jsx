@@ -13,14 +13,23 @@ const Login = () => {
   const onSubmit = (data) => {
     setMessage(null);
     emailSignIn(data)
-      .then(() => navigate(location.state.from, { replace: true }))
+      .then(() => {
+        if (location?.state === null) navigate("/");
+        else navigate(location.state.from, { replace: true });
+      })
       .catch((error) => setMessage(sliceError(error)));
   };
   const handleGoogle = async () => {
-    googleSignIn().then(() => navigate(location.state.from, { replace: true }));
+    googleSignIn().then(() => {
+      if (location?.state === null) navigate("/");
+      else navigate(location.state.from, { replace: true });
+    });
   };
   const handleGithub = async () => {
-    githubSignIn().then(() => navigate(location.state.from, { replace: true }));
+    githubSignIn().then(() => {
+      if (location?.state === null) navigate("/");
+      else navigate(location.state.from, { replace: true });
+    });
   };
 
   return (

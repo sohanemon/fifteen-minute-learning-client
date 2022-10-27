@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toasty } from "../components/toasty";
 import { useUser } from "../contexts/user-provider";
 import { sliceError } from "../utilities/slice-error";
 const Register = () => {
@@ -14,14 +15,24 @@ const Register = () => {
   const onSubmit = (data) => {
     setMessage(null);
     emailSignUp(data)
-      .then(() => navigate(location.state.from, { replace: true }))
+      .then(() => {
+        if (location?.state === null) navigate("/");
+        else navigate(location.state.from, { replace: true });
+      })
       .catch((error) => setMessage(sliceError(error)));
   };
   const handleGoogle = async () => {
-    googleSignIn().then(() => navigate(location.state.from, { replace: true }));
+    googleSignIn().then(() => {
+      if (location?.state === null) navigate("/");
+      else navigate(location.state.from, { replace: true });
+      toasty();
+    });
   };
   const handleGithub = async () => {
-    githubSignIn().then(() => navigate(location.state.from, { replace: true }));
+    githubSignIn().then(() => {
+      if (location?.state === null) navigate("/");
+      else navigate(location.state.from, { replace: true });
+    });
   };
   return (
     <>

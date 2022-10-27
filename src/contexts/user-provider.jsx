@@ -10,6 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
+import { toasty } from "../components/toasty";
 
 import { app } from "../firebase/app";
 const auth = getAuth(app);
