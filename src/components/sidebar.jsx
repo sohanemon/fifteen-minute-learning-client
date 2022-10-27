@@ -15,7 +15,7 @@ const Sidebar = () => {
     return () => {};
   }, []);
   return (
-    <section className='text-center sm:text-left'>
+    <section className='text-center sm:text-left dark:text-white'>
       <h1 className='text-xl font-semibold'>Latest courses</h1>
       {isPending ? (
         <VscLoading className='animate-spin text-3xl w-full h-12 mt-12' />
@@ -41,7 +41,7 @@ const Course = ({ title, id }) => {
         className={({ isActive }) => {
           return isActive
             ? "text-indigo-500" + navStyle
-            : "text-gray-800 " + navStyle;
+            : "text-gray-800 dark:text-gray-300" + navStyle;
         }}
       >
         {title}

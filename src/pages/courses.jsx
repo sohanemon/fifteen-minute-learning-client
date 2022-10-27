@@ -24,16 +24,21 @@ export default Courses;
 function Card({ thumbnail, title, id, description }) {
   return (
     <div className='max-w-sm mx-auto'>
-      <div className='bg-white rounded-xl shadow hover:shadow-md px-8 space-y-4 py-4 sm:px-12 lg:px-8'>
+      <div className='bg-white dark:bg-gray-500 rounded-xl shadow hover:shadow-md px-8 space-y-4 py-4 sm:px-12 lg:px-8'>
         <img
           className='object-contain h-36 mx-auto drop-shadow-sm'
           src={thumbnail}
           alt='illustration'
           loading='lazy'
         />
-        <h3 className='text-2xl font-semibold text-cyan-900'>{title}</h3>
-        <p className='mb-6 line-clamp-2'>{description}</p>
-        <Link to={`/courses/${id}`} className='block font-medium text-blue-600'>
+        <h3 className='text-2xl font-semibold text-cyan-900 dark:text-cyan-300'>
+          {title}
+        </h3>
+        <p className='mb-6 line-clamp-2 dark:text-gray-100'>{description}</p>
+        <Link
+          to={`/courses/${id}`}
+          className='block font-medium text-blue-600 dark:text-blue-200'
+        >
           Know more
         </Link>
       </div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const About = () => {
   return (
     <>
-      <div className='py-16 bg-white h-screen'>
+      <div className='py-16 bg-white h-screen dark:text-white dark:bg-gray-800'>
         <div className='container m-auto px-6 space-y-8 text-gray-500 md:px-12 lg:px-20'>
           <div className='flex items-center justify-center -space-x-2'>
             <img
@@ -48,10 +48,10 @@ const About = () => {
             />
           </div>
           <div className='m-auto space-y-6 md:w-8/12 lg:w-7/12'>
-            <h1 className='text-4xl text-gray-700 font-bold text-center md:text-5xl'>
+            <h1 className='text-4xl text-gray-700 font-bold text-center md:text-5xl dark:text-white'>
               Join with 15ML
             </h1>
-            <p className='text-xl text-center'>
+            <p className='text-xl text-center dark:text-gray-300'>
               Be part of millions people around the world learning from 15ML.
             </p>
             <div className='flex flex-wrap justify-center gap-6'>
@@ -76,7 +76,7 @@ export default About;
 const Footer = () => {
   return (
     <>
-      <footer className='w-full py-16 bg-gray-100'>
+      <footer className='w-full py-16 bg-gray-100 dark:bg-gray-800 [&_li]:dark:text-white'>
         <div className='md:px-12 lg:px-28'>
           <div className='container m-auto space-y-6 text-gray-600'>
             <ul className='py-4 flex flex-col gap-4 items-center justify-center sm:flex-row sm:gap-8'>
@@ -101,7 +101,7 @@ const Footer = () => {
                 </Link>
               </li>
             </ul>
-            <div className='w-max m-auto flex items-center justify-between space-x-4'>
+            <div className='w-max m-auto flex items-center dark:text-white justify-between space-x-4'>
               <Link href='tel:+243996660436' aria-label='call'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -148,7 +148,7 @@ const Footer = () => {
             </div>
 
             <div className='text-center'>
-              <span className='text-sm tracking-wide'>
+              <span className='text-sm tracking-wide dark:text-white'>
                 Copyright © SohanEmon {new Date().getFullYear()} | All right
                 reserved
               </span>

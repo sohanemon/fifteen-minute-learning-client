@@ -16,7 +16,7 @@ const Navbar = () => {
                 <Link to={"/"} className='flex items-center'>
                   <img
                     src='https://images.vexels.com/media/users/3/151566/isolated/lists/2e8706eaadcd2d297a542ac2385de370-15-minutes-clock-icon.png'
-                    className='mr-3 h-6 sm:h-9'
+                    className='mr-3 h-6 sm:h-9 dark:bg-white rounded-full p-1'
                     alt='15ml Logo'
                   />
                   <span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'>
@@ -111,9 +111,9 @@ const Navbar = () => {
                           <Link
                             type='button'
                             to={"/login"}
-                            className='w-full py-3 px-6 rounded-md text-center transition active:bg-sky-200 focus:bg-sky-100 sm:w-max'
+                            className='w-full py-3 px-6 rounded-md text-center transition active:bg-indigo-200 focus:bg-indigo-100 dark:focus:bg-indigo-300  sm:w-max'
                           >
-                            <span className='block text-indigo-600 font-semibold'>
+                            <span className='block text-indigo-600 font-semibold dark:text-white'>
                               Sign in
                             </span>
                           </Link>
@@ -123,7 +123,7 @@ const Navbar = () => {
                           <Link
                             to={"/register"}
                             type='button'
-                            className='w-full py-3 px-6 rounded-md text-center transition bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus:bg-sky-600 sm:w-max'
+                            className='w-full py-3 px-6 rounded-md text-center transition bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus:bg-indigo-600 sm:w-max'
                           >
                             <span className='block text-white font-semibold'>
                               Register

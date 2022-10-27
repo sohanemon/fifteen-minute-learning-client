@@ -19,7 +19,7 @@ const CourseDetails = () => {
   const ref = useRef(null);
   return (
     <>
-      <div className='py-16 bg-white '>
+      <div className='py-16 bg-white dark:bg-gray-800  '>
         <div
           className='container m-auto px-6 text-gray-600 md:px-12 xl:px-6'
           ref={ref}
@@ -32,7 +32,7 @@ const CourseDetails = () => {
                 alt={course.title}
                 loading='lazy'
               />
-              <h2 className='text-2xl text-gray-900 font-bold md:text-4xl'>
+              <h2 className='text-2xl text-gray-900 dark:text-white font-bold md:text-4xl'>
                 {course.title}
                 <span className='text-xs font-semibold align-middle font-cedarville'>
                   with
@@ -63,16 +63,16 @@ const CourseDetails = () => {
               </h2>
             </div>
             <div className='md:7/12 mx-auto'>
-              <p className='first-letter:text-2xl mt-6 text-gray-600'>
+              <p className='first-letter:text-2xl mt-6 text-gray-600 dark:text-gray-200'>
                 {course.description}
               </p>
             </div>
           </div>
           <Statistics course={course} />
-          <h1 className='text-xl font-semibold text-gray-800 pt-4'>
+          <h1 className='text-xl font-semibold text-gray-800 dark:text-white pt-4'>
             Your learning outcomes:
           </h1>
-          <ul className='list-disc list-inside'>
+          <ul className='list-disc list-inside dark:text-gray-200'>
             {course.outcomes?.map((el) => (
               <li key={el}>{el}</li>
             ))}
@@ -100,7 +100,7 @@ export default CourseDetails;
 
 function Statistics({ course }) {
   return (
-    <section className='flex text-3xl justify-evenly mt-10'>
+    <section className='flex text-3xl justify-evenly mt-10 dark:text-gray-100'>
       <div className='flex flex-col items-center gap-2'>
         <MdVideoSettings />
         <p className='text-sm'>{course.duration}+ hrs. recorded video.</p>
