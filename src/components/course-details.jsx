@@ -74,7 +74,7 @@ const CourseDetails = () => {
           </h1>
           <ul className='list-disc list-inside'>
             {course.outcomes?.map((el) => (
-              <li>{el}</li>
+              <li key={el}>{el}</li>
             ))}
           </ul>
 
@@ -87,7 +87,7 @@ const CourseDetails = () => {
             </p>
             <PrimaryBtn>Checkout</PrimaryBtn>
           </div> */}
-          <Link to={"/checkout"} className='w-max ml-auto block'>
+          <Link to={`/checkout/${course.id}`} className='w-max ml-auto block'>
             <PrimaryBtn>Get Premium Access</PrimaryBtn>
           </Link>
         </div>

@@ -1,7 +1,7 @@
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
-import { NavLink, useParams } from "react-router-dom";
 import { VscLoading } from "react-icons/vsc";
+import { NavLink, useParams } from "react-router-dom";
 const Sidebar = () => {
   const [courses, setCourses] = useState([]);
   const [isPending, setIsPending] = useState(true);

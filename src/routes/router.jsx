@@ -38,6 +38,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/faq",
+        loader: () => fetch(`${process.env.REACT_APP_host}/faq`),
         element: <Faq />,
       },
       {
@@ -57,7 +58,9 @@ export const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/checkout",
+        path: "/checkout/:id",
+        loader: ({ params }) =>
+          fetch(`${process.env.REACT_APP_host}/courses/${params?.id}`),
         element: (
           <PrivateRoute>
             <Checkout />

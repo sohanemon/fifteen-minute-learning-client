@@ -1,15 +1,19 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../contexts/user-provider";
+import { sliceError } from "../utilities/slice-error";
 const Login = () => {
   const { googleSignIn, githubSignIn, emailSignIn } = useUser();
   const navigate = useNavigate();
   const location = useLocation();
+  const [message, setMessage] = useState(null);
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
+    setMessage(null);
     emailSignIn(data)
       .then(() => navigate(location.state.from, { replace: true }))
-      .catch((error) => console.log(error));
+      .catch((error) => setMessage(sliceError(error)));
   };
   const handleGoogle = async () => {
     googleSignIn().then(() => navigate(location.state.from, { replace: true }));
@@ -87,6 +91,7 @@ const Login = () => {
                     </span>
                   </button>
                 </div>
+                <p className='text-red-500 text-sm capitalize'>{message}</p>
                 <div>
                   <button className='w-full rounded-full bg-indigo-500 dark:bg-indigo-400 h-11 flex items-center justify-center px-6 py-3 transition hover:bg-indigo-600 focus:bg-indigo-600 active:bg-indigo-800'>
                     <span className='text-base font-semibold text-white dark:text-gray-900'>

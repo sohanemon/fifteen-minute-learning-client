@@ -7,8 +7,8 @@ const Navbar = () => {
   const { user, logOut } = useUser();
   return (
     <>
-      <header>
-        <nav className='sticky top-0 w-full bg-white '>
+      <header className='sticky top-0 bg-white z-50 shadow'>
+        <nav className=' w-full bg-white '>
           <div className='container m-auto px-6 md:px-12 lg:px-6'>
             <div className='flex flex-wrap items-center justify-between py-6 gap-6 md:py-4 md:gap-0'>
               <div className='w-full flex justify-between lg:w-auto'>
@@ -74,7 +74,11 @@ const Navbar = () => {
                             <img
                               data-tip='ok'
                               data-for='#ok'
-                              src={user?.photoURL}
+                              src={
+                                user?.photoURL
+                                  ? user.photoURL
+                                  : "https://upload.wikimedia.org/wikipedia/commons/7/7e/Circle-icons-profile.svg"
+                              }
                               className='w-7 h-7 ring-1 rounded-full'
                               alt=''
                             />
